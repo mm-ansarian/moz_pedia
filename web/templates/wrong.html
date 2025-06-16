@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+{% extends 'base.html' %}
+
+{% block children %}
+
+<html dir="rtl" lang="fa">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>چی شد؟!</title>
+</head>
+
+<body>
+
+    <div>
+        {% if condition == 'already_signed_in' %}
+            <h2 style="color: red;">عه! شما که قبلا ثبت‌نام  کرده‌اید.</h2>
+            <br>
+            <form action="{% url 'main_page' %}" method="get" dir="ltr"> 
+                <input type="submit" title="بازگشت به صفحه اصلی" value="صفحه اصلی">
+            </form>
+
+        {% elif condition == 'already_logged_in' %}
+            <h2 style="color: red;">عه! شما که قبلا وارد شده‌اید.</h2>
+            <br>
+            <form action="{% url 'main_page' %}" method="get" dir="ltr"> 
+                <input type="submit" title="بازگشت به صفحه اصلی" value="صفحه اصلی">
+            </form>
+
+        {% elif condition == 'not_signed_in' %}
+            <h2 style="color: red;">دکی! شما که اصلا وارد  نشده‌اید.</h2>
+            <br>
+            <form action="{% url 'main_page' %}" method="get" dir="ltr"> 
+                <input type="submit" title="بازگشت به صفحه اصلی" value="صفحه اصلی">
+            </form>
+
+        {% elif condition == 'unexpected_error' %}
+            <h2 style="color: red;">اممم، یه چیزی اشتباه بود؛ این همه چیزی هست که می‌دانیم.</h2>
+            <br>
+            <form action="{% url 'main_page' %}" method="get" dir="ltr"> 
+                <input type="submit" title="بازگشت به صفحه اصلی" value="صفحه اصلی">
+            </form>
+
+        {% elif condition == 'none_user' %}
+            <h2 style="color: red;">اممم، یه اشتباهی رخ داد. شاید رمز عبور یا نام‌کاربری‌تان اشتباه بوده...</h2>
+            <br>
+            <form action="{% url 'login_page' %}" method="get" dir="ltr"> 
+                <input type="submit" title="بازگشت" value="بازگشت">
+            </form>
+
+        {% endif %}
+    </div>
+    
+</body>
+
+</html>
+
+{% endblock children %}

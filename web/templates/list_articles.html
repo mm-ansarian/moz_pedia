@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+{% extends 'base.html' %}
+
+{% block children %}
+
+<html dir="rtl" lang="fa">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مقالات</title>
+    <style>
+        h2 {
+            white-space: pre;
+        }
+
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <main style="text-align: right;">
+        <h1>مقالات</h1>
+        {% for article in articles %}
+            <h2><a href="{% url 'article_page' article.id %}">    {{ forloop.counter}}. {{article.title }}</a></h2>
+            <ul>
+                <ul style="list-style-type: disc; width: 40%;">
+                    <li><b>نویسنده:</b> {{ article.author }}</li></>
+                    <br>
+                    <li><b>نوشته شده در:</b> {{ article.created_at }}</li>
+                    <br>
+                    <li><b>به‌روزرسانی شده در:</b> {{ article.updated_at }}</li>
+                    <br>
+                    <li"><b>تعریف کوتاه:</b> {{ article.description }}</li>
+                </ul>
+            </ul>
+            <br>
+            <br>
+        {% endfor %}
+        </main>
+    
+</body>
+
+</html>
+
+{% endblock children %}

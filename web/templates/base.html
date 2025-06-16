@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html dir= "rtl" lang="fa">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}">
+    <style>
+        html body {
+            background-color: khaki;
+            text-align: center;
+        }
+
+        header {
+            text-align: center;
+        }
+
+        a {
+            text-decoration: none;
+            white-space: pre;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <header style="text-align: right;">
+        <a href="{% url 'main_page' %}" style="font-size: 40px;"><b>موز پدیا</b></a>
+        {% if user.username %}
+            <a>                                                                                                                                                                                                                                                                        </a>
+            <a href="{% url 'account_page' %}" style="color: green;">{{ user.username }}</a>
+            <br>
+            <a>                                                                                                                                                        </a>
+            <a href="{% url 'logout_page' %}">خروج</a>
+        {% else %}
+            <a>                                                                                                                                                                                                                                                                                    </a>
+            <a href="{% url 'signup_page' %}" style="color: red;">ناشناخته</a>
+            <br>
+            <a>                                                                                                                                           </a>
+            <a href="{% url 'signup_page' %}">ثبت‌نام</a>
+            <a>          </a>
+            <a href="{% url 'login_page' %}">ورود</a>
+        {% endif %}
+        <hr>
+        <br>
+        <br>
+        <br>
+    </header>
+                                                 
+    {% block children %}{% endblock children %}
+
+    <footer style="text-align: right;">
+        <br>
+        <br>
+        <br>
+        <hr>
+        <h3>دسترسی سریع</h3>
+        <ul>
+            <li><a href="{% url 'list_articles_page' %}">مقالات</a></li>
+            {% if user.is_admin %}
+                <br>
+                <li><a href="{% url 'create_article_page' %}">نوشتن مقاله</a></li>
+                <br>
+                <li><a href="{% url 'my_articles_page' %}">مقالات من</a></li>
+            {% endif %}
+        </ul>
+    </footer>
+
+</body>
+
+</html>

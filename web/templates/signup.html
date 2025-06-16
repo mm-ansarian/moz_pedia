@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+{% extends 'base.html' %}
+
+{% block children %}
+
+<html dir="rtl" lang="fa">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ثبت‌نام</title>
+    <style>
+        h2 pre {
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <h2>در موز پدیا ثبت‌نام کنید!</h2>
+        <br>
+        <form method="post" dir="ltr"> {% csrf_token %}
+            <pre style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+                {{ form.username }}<label for="id_username"> <b>:نام کاربری</b></label>
+
+                {{ form.first_name }}<label for="id_first_name"> <b>:نام</b></label>
+
+                {{ form.last_name }}<label for="id_last_name"> <b>:نام خانوادگی</b></label>
+
+                {{ form.email }}<label for="id_email"> <b>:ایمیل</b></label>
+
+                {{ form.password }}<label for="id_password"> <b>:رمز عبور</b></label>
+
+                <input type="submit" title="ثبت‌نام" value="ثبت‌نام">
+            </pre>
+        </form>
+    </div>
+    
+</body>
+
+</html>
+
+{% endblock children %}

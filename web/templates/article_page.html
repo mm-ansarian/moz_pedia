@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+{% extends 'base.html' %}
+
+{% block children %}
+
+<html dir="rtl" lang="fa">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ article.title }}</title>
+    <style>
+        h2 {
+            white-space: pre;
+        }
+
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <main style="text-align: right;">
+        <h1>{{ article.title }}</h1>
+        <p style="white-space: pre-wrap; padding: 0 10px; width: 90%;">{{  article_content|safe  }}</p>
+        <br>
+        <br>
+        <br>
+        <p><b>نویسنده:</b> <i>{{ article.author }}</i></p>
+        <p><b>نوشته شده در:</b> <i>{{ article.created_at }}</i></p>
+        <p><b>به‌روزرسانی شده در:</b> <i>{{ article.updated_at }}</i></p>
+    </main> 
+    
+</body>
+
+</html>
+
+{% endblock children %}

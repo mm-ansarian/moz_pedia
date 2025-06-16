@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+{% extends 'base.html' %}
+
+{% block children %}
+
+<html dir="rtl" lang="fa">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نوشتن مقاله</title>
+    <style>
+        h2 {
+            white-space: pre;
+        }
+
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <main style="text-align: center;">
+        <h2>یک مقاله در موز پدیا نوشته و  منتشر کنید!</h2>
+        <br>
+        <form method="post" dir="ltr"> {% csrf_token %}
+            {{ form.title }}
+            <label for="id_title"> <b>:عنوان</b></label>
+            <br>
+            <br>
+            {{ form.description }}
+            <label for="id_description"> <b>شرح کوتاه</b></label>
+            <br>
+            <br>
+            {{ form.content }}
+            <label for="id_content"> <b>:محتوا</b></label>
+            <br>
+            <br>
+            <input type="submit" title="انتشار مقاله" value="انتشار">
+        </form>
+    </main> 
+    
+</body>
+
+</html>
+
+{% endblock children %}
